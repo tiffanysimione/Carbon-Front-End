@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import Add from './components/Add';
+import Edit from './components/Edit.js';
 import CarbonFootPrint from './components/FootPrint';
-
 
 
 const App = () => {
 
-    const [footPrint, setFootPrint] = useState([])
-    const [add, setAdd] = useState(false)
+  const [footPrint, setFootPrint] = useState([])
+  const [add, setAdd] = useState(false)
+
+
 
     // ADD FOOTPRINT
     const addFootPrint = () => {
@@ -34,38 +36,60 @@ const App = () => {
       )
     }
 
+
+    const handleEdit = (data) => {
+      axios.put(`http://localhost:3000/carbon/${data._id}`, data).then((response) => {
+        console.log(response);
+        let newFootPrint = footPrint.map((footPrintItem) => {
+          if (footPrintItem._id === data._id) {
+            return data;
+          } else {
+            return footPrintItem;
+          }
+        });
+        setFootPrint(newFootPrint);
+      }).catch((error) => console.log(error))
+    };
+  
+  
+
+
     useEffect(() => {
       getFootPrint()
     }, [])
 
 
-  return (
-    <main>
-      <div>
-        <h1>Carbon Footprint</h1>
-       {add === false ? <button onClick={addFootPrint}>Add New Footprint</button> : <button onClick={addFootPrint}>Close</button>
-       
-       }
-       {add ?
-       <>
-          <Add setAdd={setAdd} getFootPrint={getFootPrint}/>
-       </> :
-             <div>
-             {footPrint.map((footPrint) => {
-               return (
-                <CarbonFootPrint key={footPrint._id} footPrint={footPrint} handleDelete={handleDelete}/>
-      
-               )
-             })}
+
+    return (
+      <main>
+        <div>
+          <h1>Carbon Footprint</h1>
+          {add === false ? (
+            <button onClick={addFootPrint}>Add New Footprint</button>
+          ) : (
+            <button onClick={addFootPrint}>Close</button>
+          )}
+  
+          {add ? (
+            <Add setAdd={setAdd} getFootPrint={getFootPrint} />
+          ) : (
+            <div>
+              {footPrint.map((footPrint) => {
+                return (
+                  <div key={footPrint._id}>
+                    <CarbonFootPrint
+                      footPrint={footPrint}
+                      handleDelete={handleDelete}Del
+                    />
+                     <Edit footPrint={footPrint} handleEdit={handleEdit} />
+                  </div>
+                );
+              })}
             </div>
-       }
-    
-     </div>
-    </main>
-    
-
-  )
-}
-
-
-export default App;
+          )}
+        </div>
+      </main>
+    )
+  }
+  
+  export default App;
