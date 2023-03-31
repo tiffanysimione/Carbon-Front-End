@@ -8,19 +8,25 @@ const Edit = (props) => {
   const [newYearlyMileage, setNewYearlyMileage] = useState(props.footPrint.yearlyMileage)
   const [newCarbonTotal, setNewCarbonTotal] = useState(props.footPrint.carbonTotal)
 
-  const handleBill = (event) => {
+   // TOTAL
+   const carbonTotal = () => {
+    let carbonTotal = (newMonthlyBill + newMonthlyGas + newMonthlyOil + newYearlyMileage );
+    setNewCarbonTotal(carbonTotal);
+  };
+
+  const handleBillUpdate = (event) => {
     setNewMonthlyBill(event.target.value * 105)
   }
 
-  const handleGas = (event) => {
+  const handleGasUpdate = (event) => {
     setNewMonthlyGas(event.target.value * 105)
   }
 
-  const handleOil = (event) => {
+  const handleOilUpdate = (event) => {
     setNewMonthlyOil(event.target.value * 113)
   }
 
-  const handleMileage = (event) => {
+  const handleMileageUpdate = (event) => {
     setNewYearlyMileage(event.target.value * 0.79)
   }
 
@@ -54,19 +60,19 @@ const Edit = (props) => {
         <summary>Edit Carbon FootPrint</summary>
         <form onSubmit={handleEdit}>
           <label htmlFor='monthlyBill'>Monthly Bill:</label>
-          <input type='number' name='monthlyBill' onChange={handleBill} value={newMonthlyBill}/>
+          <input type='number' name='monthlyBill' onChange={handleBillUpdate}/>
           <br/>
           <br/>
           <label htmlFor='monthlyGas'>Monthly Gas:</label>
-          <input type='number' name='monthlyGas' onChange={handleGas} value={newMonthlyGas}/>
+          <input type='number' name='monthlyGas' onChange={handleGasUpdate} />
           <br/>
           <br/>
           <label htmlFor='monthlyOil'>Monthly Oil:</label>
-          <input type='number' name='monthlyOil' onChange={handleOil} value={newMonthlyOil}/>
+          <input type='number' name='monthlyOil' onChange={handleOilUpdate} />
           <br/>
           <br/>
           <label htmlFor='yearlyMileage'>Yearly Mileage:</label>
-          <input type='number' name='yearlyMileage' onChange={handleMileage} value={newYearlyMileage}/>
+          <input type='number' name='yearlyMileage' onChange={handleMileageUpdate}/>
           <br/>
           <br/>
 
