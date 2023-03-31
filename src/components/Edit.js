@@ -6,20 +6,10 @@ const Edit = (props) => {
   const [newMonthlyGas, setNewMonthlyGas] = useState(props.footPrint.monthlyGas)
   const [newMonthlyOil, setNewMonthlyOil] = useState(props.footPrint.monthlyOil)
   const [newYearlyMileage, setNewYearlyMileage] = useState(props.footPrint.yearlyMileage)
-  const [newShortFlights, setShortFlights] = useState(props.footPrint.shortFlights)
-  const [newLongFlights, setLongFlights] = useState(props.footPrint.longFlights)
-  const [newCarbonTotal, setNewCarbonTotal] = useState(props.footPrint.carbonTotal)
-
-
-  useEffect(() => {
-    const carbonTotal = () => {
-      let carbonTotal = (newMonthlyBill + newMonthlyGas + newMonthlyOil + newYearlyMileage +newShortFlights+newLongFlights);
-      setNewCarbonTotal(carbonTotal);
-    };
-  
-    carbonTotal();
-  }, [newMonthlyBill, newMonthlyGas, newMonthlyOil, newYearlyMileage,newShortFlights,newLongFlights]);
-
+  const [newShortFlights, setNewShortFlights] = useState(props.footPrint.shortFlights)
+  const [newLongFlights, setNewLongFlights] = useState(props.footPrint.longFlights)
+  const [recycleNewspaper, setRecycleNewspaper] = useState(props.tagert.recycleNewspaper)
+  const [recycleAluminum, setRecycleAluminum] = useState(props.footPrint.recycleAluminum)
 
   const handleBillUpdate = (event) => {
     setNewMonthlyBill(event.target.value * 105)
@@ -37,13 +27,13 @@ const Edit = (props) => {
     setNewYearlyMileage(event.target.value * 0.79)
   }
 
-  const handleShortFlights = (event) => {
-    setShortFlights(event.target.value * 1100)
-  }
+  // const handleShortFlights = (event) => {
+  //   setNewCarbonTotal(event.target.value * 1100)
+  // }
 
-  const handleLongFlights = (event) => {
-    setLongFlights(event.target.value * 4400)
-  }
+  // const handleLongFlight = (event) => {
+  //   setNewCarbonTotal(event.target.value * 4400)
+  // }
 
   const handleEdit = (event) => {
     event.preventDefault();
@@ -55,7 +45,7 @@ const Edit = (props) => {
         shortFlights: newShortFlights,
         longFlights: newLongFlights,
         yearlyMileage: newYearlyMileage,
-        carbonTotal: newCarbonTotal,
+        carbonTotal: newCarbonTotal
       }
     ).then(() => {
         props.setEdit(false)
@@ -70,34 +60,32 @@ const Edit = (props) => {
         <summary>Edit Carbon FootPrint</summary>
         <form onSubmit={handleEdit}>
           <label htmlFor='monthlyBill'>Monthly Bill:</label>
-          <input type='number' name='monthlyBill' onChange={handleBillUpdate}/>
+          <input type='number' name='monthlyBill' placeholder={props.footPrint.monthlyBill} onChange={handleBillUpdate}/>
           <br/>
           <br/>
           <label htmlFor='monthlyGas'>Monthly Gas:</label>
-          <input type='number' name='monthlyGas' onChange={handleGasUpdate} />
+          <input type='number' name='monthlyGas' placeholder={props.footPrint.monthlyGas} onChange={handleGasUpdate} />
           <br/>
           <br/>
           <label htmlFor='monthlyOil'>Monthly Oil:</label>
-          <input type='number' name='monthlyOil' onChange={handleOilUpdate} />
+          <input type='number' name='monthlyOil' placeholder={props.footPrint.monthlyOil} onChange={handleOilUpdate} />
           <br/>
           <br/>
           <label htmlFor='yearlyMileage'>Yearly Mileage:</label>
-          <input type='number' name='yearlyMileage' onChange={handleMileageUpdate}/>
+          <input type='number' name='yearlyMileage' placeholder={props.footPrint.yearlyMileage}  onChange={handleMileageUpdate}/>
           <br/>
           <br/>
-          <label htmlFor='shortFlights'> Short Flights</label>
-          <input type='number' name='shortFlights' onChange={handleShortFlights}/>
+          <label htmlFor='shortFlights'>Short Flights:</label>
+          <input type='number' name='shortFlights' placeholder={props.footPrint.shortFlights} onChange={handleShortFlights}/>
           <br/>
           <br/>
-          <label htmlFor='longFlights'>Yearly Mileage:</label>
-          <input type='number' name='longFlights' onChange={handleLongFlights}/>
-          <br/>
-        `<br/>
-        <button type="submit">Submit</button>
-      </form>
-    </details>
-  </>
-);
+
+
+          <input type="submit"/>
+        </form>
+      </details>
+    </>
+  )
 }
 
 export default Edit;
