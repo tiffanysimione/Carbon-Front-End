@@ -10,6 +10,8 @@ const Add = (props) => {
     const [yearlyMileage, setYearlyMileage] = useState()
     const [shortFlights, setShortFlights] = useState()
     const [longFlights, setLongFlights] = useState()
+    const [recycleNewspaper, setrecycleNewspaper] = useState(false)
+    const [recycleAluminum, setrecycleAluminum] = useState(false)
 
     // LISTEN FOR BILL AND UPDATE STATE
     const handleBill = (event) => {
@@ -37,15 +39,29 @@ const Add = (props) => {
     }
     
     // LISTEN FOR LONG-FLIGHTS AND UPDATE STATE
-    const handleLongFlight = (event)=> {
+    const handleLongFlight = (event) => {
         setLongFlights(event.target.value * 4400)
     }
 
+    // CHECKBOXES
+    const newspaper = (event) => {
+        setrecycleNewspaper(event.target.checked)
+    }
+
+    const aluminum = (event) => {
+        setrecycleAluminum(event.target.checked)
+    }
+
+
     // TOTAL
     const total = () => {
-        return (
-            monthlyBill + monthlyGas + monthlyOil + yearlyMileage + shortFlights + longFlights
-        )
+        let carbonTotal = (monthlyBill + monthlyGas + monthlyOil + yearlyMileage + shortFlights + longFlights)
+
+        if (recycleAluminum === true){
+            carbonTotal += 166 } 
+        if (recycleNewspaper === true){
+            carbonTotal += 184 } 
+        return carbonTotal
     }
 
      // SEND STATES TO DATABASE WHEN SUBMITTING FORM
@@ -58,7 +74,9 @@ const Add = (props) => {
             yearlyMileage: yearlyMileage,
             shortFlights: shortFlights,
             longFlights: longFlights,
-            carbonTotal: total()
+            carbonTotal: total(),
+            recycleAluminum,
+            recycleNewspaper,
         }).then(() => {
             props.setAdd(false)
             props.getFootPrint()
@@ -68,12 +86,16 @@ const Add = (props) => {
         <div>
             <h3> Add a new Foot Print</h3>
             <form onSubmit={addFootPrint}>
-                <input type='number' name='monthyBill' placeholder='monthlyBill' required onChange={handleBill}/>
-                <input type='number' name='monthlyGas' placeholder='monthlyGas' required onChange={handleGas}/>
-                <input type='number' name='monthlyOil' placeholder='monthlyOil' required onChange={handleOil}/>
-                <input type='number' name='yearlyMileage' placeholder='yearlyMileage' required onChange={handleMileage}/>
-                <input type='number' name='shortFlights' placeholder='shortFlights' required onChange={handleShortFight}/>
-                <input type='number' name='longFlights' placeholder='longFlights' required onChange={handleLongFlight}/>
+                <input type='number' name='monthyBill' placeholder='Monthly Bill' required onChange={handleBill}/>
+                <input type='number' name='monthlyGas' placeholder='Monthly Gas' required onChange={handleGas}/>
+                <input type='number' name='monthlyOil' placeholder='Monthly Oil' required onChange={handleOil}/>
+                <input type='number' name='yearlyMileage' placeholder='Yearly Mileage' required onChange={handleMileage}/>
+                <input type='number' name='shortFlights' placeholder='Short Flights' required onChange={handleShortFight}/>
+                <input type='number' name='longFlights' placeholder='Long Flights' required onChange={handleLongFlight}/>
+                <label htmlFor="newspaper">Do you recycle newspaper?</label>
+                <input id='newspaper' type='checkbox' name='recycleNewspaper' onChange={newspaper}/>
+                <label htmlFor="aluminum">Do you recycle aluminum?</label>
+                <input id='aluminum' type='checkbox' name='recycleAluminum' onChange={aluminum}/>
                 <input type='submit' value='SUBMIT' />
             </form>
         </div>

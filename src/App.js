@@ -41,8 +41,8 @@ const App = () => {
   return (
     <main>
       <div>
-        <h1>Carbon footPrint</h1>
-       <button onClick={addFootPrint}>Add Carbon footPrint</button>
+        <h1>Carbon Footprint</h1>
+       <button onClick={addFootPrint}>Add New Footprint</button>
        <Add setAdd={setAdd} getFootPrint={getFootPrint}/>
        <div>
         {footPrint.map((footPrint) => {
@@ -50,7 +50,7 @@ const App = () => {
             <div key={footPrint._id}>
               <h6>YOUR CARBON FOOTPRINT IS:</h6>
               <h3>{footPrint.carbonTotal}</h3>
-            <button onClick={()=>{handleDelete(footPrint)}}>X</button>
+            <button onClick={()=>{handleDelete(footPrint)}}>x</button>
             </div>
           )
         })}
