@@ -43,18 +43,19 @@ const App = () => {
     <main>
       <div>
         <h1>Carbon Footprint</h1>
+        {/* IF ADD IS FALSE IT WILL RENDER THE CREATE NEW FOOTPRINT INPUT FORM / ELSE IT HIDE THE CREATE AND JUST DISPLAY THE ALREADY CREATED FOOTPRINTS */}
        {add === false ? <button onClick={addFootPrint}>Add New Footprint</button> : <button onClick={addFootPrint}>Close</button>
        
        }
        {add ?
        <>
+       {/* IF ADD IS TRUE JUST SHOW THE CREATE MENU (ADD.JS FILE) / ELSE SHOW THE LIST OF CREATED FOOTPRINTS */}
           <Add setAdd={setAdd} getFootPrint={getFootPrint}/>
        </> :
              <div>
              {footPrint.map((footPrint) => {
                return (
                 <CarbonFootPrint key={footPrint._id} footPrint={footPrint} handleDelete={handleDelete}/>
-      
                )
              })}
             </div>

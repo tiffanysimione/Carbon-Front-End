@@ -78,6 +78,7 @@ const Add = (props) => {
             recycleAluminum,
             recycleNewspaper,
         }).then(() => {
+            // RETURNS YOU BACK TO THE LSIT VIEW AFTER YOU SAVE
             props.setAdd(false)
             props.getFootPrint()
         })
