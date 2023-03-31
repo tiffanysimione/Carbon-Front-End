@@ -53,6 +53,7 @@ const App = () => {
   
   
 
+    
 
     useEffect(() => {
       getFootPrint()
@@ -79,10 +80,16 @@ const App = () => {
                   <div key={footPrint._id}>
                     <CarbonFootPrint
                       footPrint={footPrint}
-                      handleDelete={handleDelete}Del
+                      result={footPrint.carbonValue < 5000 ? "good job" : "you hate the earth"}
+                      handleDelete={handleDelete}
                     />
-                     <Edit footPrint={footPrint} handleEdit={handleEdit} />
+     <Edit footPrint={footPrint} handleEdit={handleEdit} />
+          <button onClick={() => alert(`Your carbon footprint is ${footPrint.carbonValue < 5000 ? "good" : "you hate the earth"}`)}>
+        Check Footprint Status
+      </button>
                   </div>
+          
+                  
                 );
               })}
             </div>
