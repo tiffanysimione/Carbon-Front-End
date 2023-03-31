@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 
 const Edit = (props) => {
@@ -27,13 +27,35 @@ const Edit = (props) => {
     setNewYearlyMileage(event.target.value * 0.79)
   }
 
-  // const handleShortFlights = (event) => {
-  //   setNewCarbonTotal(event.target.value * 1100)
-  // }
+  const handleShortFlights = (event) => {
+    setNewShortFlights(event.target.value * 1100)
+  }
 
-  // const handleLongFlight = (event) => {
-  //   setNewCarbonTotal(event.target.value * 4400)
-  // }
+  const handleLongFlights = (event) => {
+    setNewLongFlights(event.target.value * 4400)
+  }
+
+    // CHECKBOXES
+    const newspaperUpdate = (event) => {
+      setRecycleNewspaper(event.target.checked)
+  }
+
+  const aluminumUpdate = (event) => {
+      setRecycleAluminum(event.target.checked)
+  }
+
+
+     // TOTAL
+     const newTotal = () => {
+      let newCarbonTotal = (newMonthlyBill + newMonthlyGas + newMonthlyOil + newYearlyMileage + newShortFlights + newLongFlights)
+
+      if (recycleAluminum === false){
+        newCarbonTotal += 166 } 
+      if (recycleNewspaper === false){
+        newCarbonTotal += 184 } 
+      return newCarbonTotal
+    }; 
+    
 
   const handleEdit = (event) => {
     event.preventDefault();
@@ -42,17 +64,18 @@ const Edit = (props) => {
         monthlyBill: newMonthlyBill,
         monthlyGas: newMonthlyGas,
         monthlyOil: newMonthlyOil,
+        yearlyMileage: newYearlyMileage,
         shortFlights: newShortFlights,
         longFlights: newLongFlights,
-        yearlyMileage: newYearlyMileage,
-        carbonTotal: newCarbonTotal
+        carbonTotal: newTotal(),
+        recycleAluminum,
+        recycleNewspaper,
       }
-    ).then(() => {
+      ).then(() => {
         props.setEdit(false)
         props.getfootPrint()
     })
-  }
-
+}
 
   return (
     <>
@@ -79,7 +102,12 @@ const Edit = (props) => {
           <input type='number' name='shortFlights' placeholder={props.footPrint.shortFlights} onChange={handleShortFlights}/>
           <br/>
           <br/>
-
+          <label htmlFor='longFlights'>Long Flights:</label>
+          <input type='number' name='longFlights' placeholder={props.footPrint.longFlights}  onChange={handleLongFlights}/>
+          <label htmlFor="newspaper">Do you recycle newspaper?</label>
+                <input id='newspaper' type='checkbox' name='recycleNewspaper' onChange={newspaperUpdate}/>
+                <label htmlFor="aluminum">Do you recycle aluminum?</label>
+                <input id='aluminum' type='checkbox' name='recycleAluminum' onChange={aluminumUpdate}/>
 
           <input type="submit"/>
         </form>
