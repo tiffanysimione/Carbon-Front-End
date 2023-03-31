@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
 const Edit = (props) => {
@@ -6,13 +6,20 @@ const Edit = (props) => {
   const [newMonthlyGas, setNewMonthlyGas] = useState(props.footPrint.monthlyGas)
   const [newMonthlyOil, setNewMonthlyOil] = useState(props.footPrint.monthlyOil)
   const [newYearlyMileage, setNewYearlyMileage] = useState(props.footPrint.yearlyMileage)
+  const [newShortFlights, setShortFlights] = useState(props.footPrint.shortFlights)
+  const [newLongFlights, setLongFlights] = useState(props.footPrint.longFlights)
   const [newCarbonTotal, setNewCarbonTotal] = useState(props.footPrint.carbonTotal)
 
-   // TOTAL
-   const carbonTotal = () => {
-    let carbonTotal = (newMonthlyBill + newMonthlyGas + newMonthlyOil + newYearlyMileage );
-    setNewCarbonTotal(carbonTotal);
-  };
+
+  useEffect(() => {
+    const carbonTotal = () => {
+      let carbonTotal = (newMonthlyBill + newMonthlyGas + newMonthlyOil + newYearlyMileage +newShortFlights+newLongFlights);
+      setNewCarbonTotal(carbonTotal);
+    };
+  
+    carbonTotal();
+  }, [newMonthlyBill, newMonthlyGas, newMonthlyOil, newYearlyMileage,newShortFlights,newLongFlights]);
+
 
   const handleBillUpdate = (event) => {
     setNewMonthlyBill(event.target.value * 105)
@@ -30,13 +37,13 @@ const Edit = (props) => {
     setNewYearlyMileage(event.target.value * 0.79)
   }
 
-  // const handleShortFlights = (event) => {
-  //   setNewCarbonTotal(event.target.value * 1100)
-  // }
+  const handleShortFlights = (event) => {
+    setShortFlights(event.target.value * 1100)
+  }
 
-  // const handleLongFlight = (event) => {
-  //   setNewCarbonTotal(event.target.value * 4400)
-  // }
+  const handleLongFlights = (event) => {
+    setLongFlights(event.target.value * 4400)
+  }
 
   const handleEdit = (event) => {
     event.preventDefault();
@@ -45,14 +52,17 @@ const Edit = (props) => {
         monthlyBill: newMonthlyBill,
         monthlyGas: newMonthlyGas,
         monthlyOil: newMonthlyOil,
+        shortFlights: newShortFlights,
+        longFlights: newLongFlights,
         yearlyMileage: newYearlyMileage,
-        carbonTotal: newCarbonTotal
+        carbonTotal: newCarbonTotal,
       }
-      ).then(() => {
+    ).then(() => {
         props.setEdit(false)
         props.getfootPrint()
     })
-}
+  }
+
 
   return (
     <>
@@ -75,13 +85,19 @@ const Edit = (props) => {
           <input type='number' name='yearlyMileage' onChange={handleMileageUpdate}/>
           <br/>
           <br/>
-
-
-          <input type="submit"/>
-        </form>
-      </details>
-    </>
-  )
+          <label htmlFor='shortFlights'> Short Flights</label>
+          <input type='number' name='shortFlights' onChange={handleShortFlights}/>
+          <br/>
+          <br/>
+          <label htmlFor='longFlights'>Yearly Mileage:</label>
+          <input type='number' name='longFlights' onChange={handleLongFlights}/>
+          <br/>
+        `<br/>
+        <button type="submit">Submit</button>
+      </form>
+    </details>
+  </>
+);
 }
 
 export default Edit;
