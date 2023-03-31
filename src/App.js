@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import Add from './components/Add';
+import CarbonFootPrint from './components/FootPrint';
 
 
 
@@ -41,20 +42,24 @@ const App = () => {
   return (
     <main>
       <div>
-        <h1>Carbon footPrint</h1>
-       <button onClick={addFootPrint}>Add Carbon footPrint</button>
-       <Add setAdd={setAdd} getFootPrint={getFootPrint}/>
-       <div>
-        {footPrint.map((footPrint) => {
-          return (
-            <div key={footPrint._id}>
-              <h6>YOUR CARBON FOOTPRINT IS:</h6>
-              <h3>{footPrint.carbonTotal}</h3>
-            <button onClick={()=>{handleDelete(footPrint)}}>X</button>
+        <h1>Carbon Footprint</h1>
+       {add === false ? <button onClick={addFootPrint}>Add New Footprint</button> : <button onClick={addFootPrint}>Close</button>
+       
+       }
+       {add ?
+       <>
+          <Add setAdd={setAdd} getFootPrint={getFootPrint}/>
+       </> :
+             <div>
+             {footPrint.map((footPrint) => {
+               return (
+                <CarbonFootPrint key={footPrint._id} footPrint={footPrint} handleDelete={handleDelete}/>
+      
+               )
+             })}
             </div>
-          )
-        })}
-       </div>
+       }
+    
      </div>
     </main>
     
