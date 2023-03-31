@@ -42,19 +42,26 @@ const App = () => {
     <main>
       <div>
         <h1>Carbon Footprint</h1>
-       <button onClick={addFootPrint}>Add New Footprint</button>
-       <Add setAdd={setAdd} getFootPrint={getFootPrint}/>
-       <div>
-        {footPrint.map((footPrint) => {
-          return (
-            <div key={footPrint._id}>
-              <h6>YOUR CARBON FOOTPRINT IS:</h6>
-              <h3>{footPrint.carbonTotal}</h3>
-            <button onClick={()=>{handleDelete(footPrint)}}>x</button>
+       {add === false ? <button onClick={addFootPrint}>Add New Footprint</button> : <button onClick={addFootPrint}>Close</button>
+       
+       }
+       {add ?
+       <>
+          <Add setAdd={setAdd} getFootPrint={getFootPrint}/>
+       </> :
+             <div>
+             {footPrint.map((footPrint) => {
+               return (
+                 <div key={footPrint._id}>
+                   <h6>YOUR CARBON FOOTPRINT IS:</h6>
+                   <h3>{footPrint.carbonTotal}</h3>
+                 <button onClick={()=>{handleDelete(footPrint)}}>x</button>
+                 </div>
+               )
+             })}
             </div>
-          )
-        })}
-       </div>
+       }
+    
      </div>
     </main>
     

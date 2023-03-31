@@ -57,9 +57,9 @@ const Add = (props) => {
     const total = () => {
         let carbonTotal = (monthlyBill + monthlyGas + monthlyOil + yearlyMileage + shortFlights + longFlights)
 
-        if (recycleAluminum === true){
+        if (recycleAluminum === false){
             carbonTotal += 166 } 
-        if (recycleNewspaper === true){
+        if (recycleNewspaper === false){
             carbonTotal += 184 } 
         return carbonTotal
     }
