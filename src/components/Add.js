@@ -10,7 +10,7 @@ const Add = (props) => {
     const [yearlyMileage, setYearlyMileage] = useState()
     const [shortFlights, setShortFlights] = useState()
     const [longFlights, setLongFlights] = useState()
-    const [recycleNewspaper, setrecycleNewspaper] = useState(false)
+    const [recycleNewspaper, setRecycleNewspaper] = useState(false)
     const [recycleAluminum, setrecycleAluminum] = useState(false)
 
     // LISTEN FOR BILL AND UPDATE STATE
@@ -34,7 +34,7 @@ const Add = (props) => {
     }
 
     // LISTEN FOR SHORT-FLIGHTS AND UPDATE STATE
-    const handleShortFight = (event) => {
+    const handleShortFlight = (event) => {
         setShortFlights(event.target.value * 1100)
     }
     
@@ -45,7 +45,7 @@ const Add = (props) => {
 
     // CHECKBOXES
     const newspaper = (event) => {
-        setrecycleNewspaper(event.target.checked)
+        setRecycleNewspaper(event.target.checked)
     }
 
     const aluminum = (event) => {
@@ -91,7 +91,7 @@ const Add = (props) => {
                 <input type='number' name='monthlyGas' placeholder='Monthly Gas' required onChange={handleGas}/>
                 <input type='number' name='monthlyOil' placeholder='Monthly Oil' required onChange={handleOil}/>
                 <input type='number' name='yearlyMileage' placeholder='Yearly Mileage' required onChange={handleMileage}/>
-                <input type='number' name='shortFlights' placeholder='Short Flights' required onChange={handleShortFight}/>
+                <input type='number' name='shortFlights' placeholder='Short Flights' required onChange={handleShortFlight}/>
                 <input type='number' name='longFlights' placeholder='Long Flights' required onChange={handleLongFlight}/>
                 <label htmlFor="newspaper">Do you recycle newspaper?</label>
                 <input id='newspaper' type='checkbox' name='recycleNewspaper' onChange={newspaper}/>
