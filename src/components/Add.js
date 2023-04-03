@@ -84,7 +84,9 @@ const Add = (props) => {
         })
     }
     return (
-        <div>
+        <main> 
+        <div className ="pop-up">
+        <div className ="pop-upcontent">
             <h3> Add a new Foot Print</h3>
             <form onSubmit={addFootPrint}>
                 <input type='number' name='monthyBill' placeholder='Monthly Bill' required onChange={handleBill}/>
@@ -100,6 +102,9 @@ const Add = (props) => {
                 <input type='submit' value='SUBMIT' />
             </form>
         </div>
+          </div>
+          </main>
+
     )
 }
 
