@@ -8,7 +8,7 @@ const Edit = (props) => {
   const [newYearlyMileage, setNewYearlyMileage] = useState(props.footPrint.yearlyMileage)
   const [newShortFlights, setNewShortFlights] = useState(props.footPrint.shortFlights)
   const [newLongFlights, setNewLongFlights] = useState(props.footPrint.longFlights)
-  const [recycleNewspaper, setRecycleNewspaper] = useState(props.tagert.recycleNewspaper)
+  const [recycleNewspaper, setRecycleNewspaper] = useState(props.footPrint.recycleNewspaper)
   const [recycleAluminum, setRecycleAluminum] = useState(props.footPrint.recycleAluminum)
 
   const handleBillUpdate = (event) => {
