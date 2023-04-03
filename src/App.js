@@ -4,8 +4,6 @@ import './App.css';
 import Add from './components/Add';
 import Edit from './components/Edit.js';
 import CarbonFootPrint from './components/FootPrint';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import LoginPage from './components/LoginPage';
 
 
 
@@ -67,38 +65,41 @@ const App = () => {
 
 
     return (
-    <main>
-      <div>
-        <h1>Carbon Footprint</h1>
-        {add === false ? (
-          <button onClick={addFootPrint}>Add New Footprint</button>
-        ) : (
-          <button onClick={addFootPrint}>Close</button>
-        )}
-        {add ? (
-          <Add setAdd={setAdd} getFootPrint={getFootPrint} />
-        ) : (
-          <div>
-            {footPrint.map((footPrint) => {
-              return (
-                <div key={footPrint._id}>
-                  <CarbonFootPrint footPrint={footPrint} handleDelete={handleDelete} />
-                  <Edit footPrint={footPrint} handleEdit={handleEdit} />
-                </div>
-              )
-            })}
-          </div>
-        )}
-      </div>
-      <>
-        <BrowserRouter>
-        <Routes> 
-        <Route path="/login" element={<LoginPage />} />
-        </Routes>
-        </BrowserRouter>
-      </>
-    </main>
-  )
-}
-
-export default App;
+      <main>
+        <div>
+          <h1>Carbon Footprint</h1>
+          {add === false ? (
+            <button onClick={addFootPrint}>Add New Footprint</button>
+          ) : (
+            <button onClick={addFootPrint}>Close</button>
+          )}
+  
+          {add ? (
+            <Add setAdd={setAdd} getFootPrint={getFootPrint} />
+          ) : (
+            <div>
+              {footPrint.map((footPrint) => {
+                return (
+                  <div key={footPrint._id}>
+                    <CarbonFootPrint
+                      footPrint={footPrint}
+                      result={footPrint.carbonValue < 5000 ? "good job" : "you hate the earth"}
+                      handleDelete={handleDelete}
+                    />
+     <Edit footPrint={footPrint} handleEdit={handleEdit} />
+          <button onClick={() => alert(`Your carbon footprint is ${footPrint.carbonValue < 5000 ? "good" : "you hate the earth"}`)}>
+        Check Footprint Status
+      </button>
+                  </div>
+          
+                  
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </main>
+    )
+  }
+  
+  export default App;
