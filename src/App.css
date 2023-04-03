@@ -261,3 +261,16 @@ button[type="submit"]:hover {
 .modal-content button:last-child {
   margin-right: 0;
 }
+
+.carbon-footprint-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.carbon-footprint-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 300px;
+}

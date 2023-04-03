@@ -14,14 +14,13 @@ const Header = (props) => {
           <li className="header__nav-item">
             <a href="/" className="header__nav-link">Home</a>
           </li>
+          
           <li className="header__nav-item">
             <a href="/" className="header__nav-link">Contact</a>
           </li>
           <li className="header__nav-item">
             <button onClick={props.addFootPrint} className="header__nav-link">Calculate Your Carbon Footprint</button>
           </li>
-          
-          
         </ul>
       </nav>
     </header>

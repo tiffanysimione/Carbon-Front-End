@@ -17,7 +17,6 @@ const App = () => {
   const [add, setAdd] = useState(false)
   const [showNewPage, setShowNewPage] = useState(false);
   const [showEditPage, setShowEditPage] = useState(false);
-  
 
 
 
@@ -62,9 +61,13 @@ const App = () => {
   
 
     const handleEditPageClick = () => {
-      setShowEditPage(true);
+      setShowEditPage(! showEditPage);
     };
-
+    
+    // const handleEditPageClose = () => {
+    //   setShowEditPage(false);
+    // };
+    
 
   
 //new page
@@ -108,7 +111,7 @@ const handleNewPageClose = () => {
                       />
                     <button onClick={handleEditPageClick}>
                   Show Edit
-                </button> {showEditPage ? <Edit footPrint={footPrint} handleEdit={handleEdit} />: null}
+                </button> {showEditPage ? <Edit handleEditPageClick={handleEditPageClick} footPrint={footPrint} handleEdit={handleEdit} />: null}
                 
                   
     

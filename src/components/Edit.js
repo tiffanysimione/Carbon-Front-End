@@ -10,7 +10,7 @@ const Edit = (props) => {
   const [newLongFlights, setNewLongFlights] = useState(props.footPrint.longFlights)
   const [recycleNewspaper, setRecycleNewspaper] = useState(props.footPrint.recycleNewspaper)
   const [recycleAluminum, setRecycleAluminum] = useState(props.footPrint.recycleAluminum)
-  const [isSubmitted, setIsSubmitted] = useState(false);
+ const [isSubmitted, setIsSubmitted] = useState(false);
 
 
   const handleBillUpdate = (event) => {
@@ -79,8 +79,8 @@ const Edit = (props) => {
       });
     };
   
-    if (isSubmitted) {
-      return null; }
+     if (isSubmitted) {
+       return null; }
 
 
 
@@ -88,8 +88,10 @@ const Edit = (props) => {
     <>
     <div className ="pop-up">
         <div className ="pop-upcontent"> 
+         <button onClick={props.handleEditPageClick}>Close </button>
       <details>
         <summary>Edit Carbon FootPrint</summary>
+       
         <form onSubmit={handleEdit}>
           <label htmlFor='monthlyBill'>Monthly Bill:</label>
           <input type='number' name='monthlyBill' placeholder={props.footPrint.monthlyBill} onChange={handleBillUpdate}/>
