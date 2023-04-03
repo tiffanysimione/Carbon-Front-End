@@ -1,38 +1,276 @@
-.App {
+/* Global styles */
+
+* {
+  font-family: Cormorant, serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  background-image: url("https://github.com/tiffanysimione/Carbon-Front-End/blob/master/src/images/env110262.jpg?raw=true");
+  background-size: cover;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-top: 2rem;
+}
+
+/* Header */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  color: black;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: whitesmoke;
+}
+
+/* Form inputs */
+input[type="text"],
+input[type="number"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  margin-bottom: 1rem;
+  width: 100%;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+/* Submit button */
+input[type="submit"] {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #0077b6;
+  color: white;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  background-color: #023e8a;
+}
+
+/* Carbon footprint item */
+.footprint-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;
+  background-color: white;
+  color: #333;
+}
+
+.edit-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #0077b6;
+  color: white;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.edit-btn:hover {
+  background-color: #023e8a;
+}
+
+/* Check button */
+.check-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #0077b6;
+  color: white;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.header {
+  background-color: transparent;
+  padding: 40px;
+  color: black;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header__title {
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header__nav {
+  margin-top: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header__nav-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.header__nav-link {
+  color: black;
+  text-decoration: none;
+}
+
+form {
+  background-color: #f5f5f5;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+button[type="submit"] {
+  background-color: #008080;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #007070;
+}
+
+.content-card {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 1rem 0;
+  padding: 1.5rem;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.content-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.show-modal-button {
+  background-color: #f7f7f7;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.modal-content h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.modal-content h1 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.modal-content button:last-child {
+  margin-right: 0;
+}
+
+.carbon-footprint-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.carbon-footprint-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 300px;
 }
