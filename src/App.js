@@ -4,6 +4,8 @@ import './App.css';
 import Add from './components/Add';
 import Edit from './components/Edit.js';
 import CarbonFootPrint from './components/FootPrint';
+import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
+import LoginPage from './page/LoginPage.js';
 
 
 const App = () => {
@@ -61,6 +63,7 @@ const App = () => {
 
 
 
+    
     return (
       <main>
         <div>
@@ -83,20 +86,28 @@ const App = () => {
                       result={footPrint.carbonValue < 5000 ? "good job" : "you hate the earth"}
                       handleDelete={handleDelete}
                     />
-     <Edit footPrint={footPrint} handleEdit={handleEdit} />
-          <button onClick={() => alert(`Your carbon footprint is ${footPrint.carbonValue < 5000 ? "good" : "you hate the earth"}`)}>
-        Check Footprint Status
-      </button>
+                    <Edit footPrint={footPrint} handleEdit={handleEdit} />
+                    <button onClick={() => alert(`Your carbon footprint is ${footPrint.carbonValue < 5000 ? "good" : "you hate the earth"}`)}>
+                      Check Footprint Status
+                    </button>
                   </div>
-          
-                  
                 );
               })}
+              <BrowserRouter>
+              <ul>
+                <li>
+                  <Link to="/login">Login</Link>                
+                    </li>
+              </ul>
+                <Routes> 
+                  <Route path="/login" element={<LoginPage />} />
+                </Routes>
+              </BrowserRouter>
             </div>
           )}
         </div>
       </main>
-    )
-  }
-  
-  export default App;
+    );
+}
+
+export default App;
