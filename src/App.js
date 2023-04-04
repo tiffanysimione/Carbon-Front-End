@@ -7,6 +7,10 @@ import CarbonFootPrint from './components/FootPrint';
 import NewPage from './components/NewPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+import BarChart from './components/BarChart';
+
 
 
 
@@ -71,9 +75,9 @@ const App = () => {
 
   
 //new page
-const handleNewPageClick = () => {
-  setShowNewPage(true);
-};
+// const handleNewPageClick = () => {
+//   setShowNewPage(true);
+// };
 
 const handleNewPageClose = () => {
   setShowNewPage(false);
@@ -85,14 +89,33 @@ const handleNewPageClose = () => {
       getFootPrint()
     }, [])
 
+    AOS.init();
 
 
     return (
-      <div>
-        <Header addFootPrint={addFootPrint} />
-        <button onClick={handleNewPageClick}>
+      
+      <div class="page-container">
+         <div class="body-container">
+
+        <div class="left-container">
+          <div class="left-header">
+             <Header addFootPrint={addFootPrint} />
+          </div>
+          <div class="left-picture">
+          <span><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</i></span>
+            <div class="image">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+          <div class="left-footer">
+            <Footer/>
+          </div>
+        </div>
+       
+        {/* <button onClick={handleNewPageClick}>
                   How To Fix Your Carbon FootPrint
-                </button>
+                </button> */}
+        <div class="right-container">
         <main>
           <div>
             {add ? (
@@ -105,7 +128,7 @@ const handleNewPageClose = () => {
                       <CarbonFootPrint
                         footPrint={footPrint}
                         result={
-                          footPrint.carbonValue < 5000 ? 'good job' : 'you hate the earth'
+                          footPrint.carbonValue < 16000 ? "Average: Want to learn how to reduce your FootPrint? Click the link below!" : "Excessive: You've got a big FootPrint! :/ Click on the link below to learn how to lower your carbon emissions!"
                         }
                         handleDelete={handleDelete}
                       />
@@ -121,7 +144,7 @@ const handleNewPageClose = () => {
                         onClick={() =>
                           alert(
                             `Your carbon footprint is ${
-                              footPrint.carbonValue < 5000 ? 'good' : 'you hate the earth'
+                              footPrint.carbonValue < 16000 ? "Average: Want to learn how to reduce your FootPrint? Click the link below!" : "Excessive: You've got a big FootPrint! :/ Click on the link below to learn how to lower your carbon emission!"
                             }`
                           )
                         }
@@ -137,7 +160,10 @@ const handleNewPageClose = () => {
           </div>
           {showNewPage && <NewPage onClose={handleNewPageClose} />}
         </main>
-        <Footer />
+        </div>
+
+        </div>
+      
       </div>
     );
   };

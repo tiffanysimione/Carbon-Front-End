@@ -1,27 +1,103 @@
 /* Global styles */
 
-* {
+/* * {
   font-family: Cormorant, serif;
-}
+  justify-content: center;
+  align-content: center;
+  border: 1px solid tomato;
+} */
 
+<<<<<<< HEAD
 body {
   margin: 0;
   padding: 0;
   background-color: #f7f7f7;
+=======
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  width: 100vw;
+>>>>>>> 4d01ae86c0dfe186e58685f77a27b412d6d321a9
   background-image: url("https://github.com/tiffanysimione/Carbon-Front-End/blob/master/src/images/iStock-1172897296.jpg?raw=true");
   background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 90%;
+  background-attachment: fixed;
+  background-position: center;
 }
 
-main {
+.body-container {
+  margin-top: -35px;
+  display: flex;
+  width: 80%;
+}
+
+.left-container {
+  /* padding-top: 100px; */
   display: flex;
   flex-direction: column;
-  align-items: left;
-  margin-top: 2rem;
+  justify-content: center;
+  margin-left: 10px;
+  width: 70%;
+  height: 100%;
 }
 
+.right-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  scroll-behavior: smooth;
+  overflow: auto;
+  margin-left: 25px;
+  margin-right: 10px;
+  width: 40%;
+  margin-top: 2rem;
+  background-color: #fefefc64;
+  box-shadow: 7px 0px 20px rgba(.3, .3, .3, .3);
+}
+
+.left-header {
+  margin-top: 40px;
+  height: 20%;
+  margin-bottom: 0%;
+}
+
+.left-picture {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 60%; */
+ 
+}
+
+span {
+  margin-bottom: 35px;
+  font-weight: bold;
+}
+.image {
+  height: 70%;
+  width: 80%;
+  margin-bottom: 100px;
+}
+
+.left-footer {
+  align-self: center;
+  height: 5%;
+}
+ 
+p {
+  text-align: center;
+  font-weight: bold;
+}
 /* Header */
+
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
   text-align: center;
   color: #333;
@@ -123,6 +199,7 @@ input[type="submit"]:hover {
 }
 
 .header__title {
+  letter-spacing: 6px;
   margin: 0;
 }
 
