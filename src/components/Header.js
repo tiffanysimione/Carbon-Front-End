@@ -10,7 +10,6 @@ const Header = (props) => {
           <li className="header__nav-item">
             <a href="/" className="header__nav-link">Home</a>
           </li>
-          
           <li className="header__nav-item">
             <a href="/" className="header__nav-link">Contact</a>
           </li>
