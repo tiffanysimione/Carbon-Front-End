@@ -7,20 +7,12 @@
   border: 1px solid tomato;
 } */
 
-<<<<<<< HEAD
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f7f7f7;
-=======
-
 .page-container {
   display: flex;
   justify-content: center;
   align-content: center;
   height: 100vh;
   width: 100vw;
->>>>>>> 4d01ae86c0dfe186e58685f77a27b412d6d321a9
   background-image: url("https://github.com/tiffanysimione/Carbon-Front-End/blob/master/src/images/iStock-1172897296.jpg?raw=true");
   background-size: cover;
   background-repeat: no-repeat;
@@ -56,7 +48,7 @@ body {
   width: 40%;
   margin-top: 2rem;
   background-color: #fefefc64;
-  box-shadow: 7px 0px 20px rgba(.3, .3, .3, .3);
+  box-shadow: 7px 0px 20px rgba(0.3, 0.3, 0.3, 0.3);
 }
 
 .left-header {
@@ -72,7 +64,6 @@ body {
   justify-content: center;
   align-items: center;
   /* height: 60%; */
- 
 }
 
 span {
@@ -89,7 +80,7 @@ span {
   align-self: center;
   height: 5%;
 }
- 
+
 p {
   text-align: center;
   font-weight: bold;
