@@ -1,14 +1,10 @@
 import React from 'react';
 
 const Header = (props) => {
-    const styles = {
-        fontFamily: 'Cormorant, serif',
-        fontWeight: 400,
-      };
 
   return (
     <header className="header">
-      <h1 className="header__title" style={styles}>Save Earth Save Life</h1>
+      <h1 className="header__title">What's Your FootPrint?</h1>
       <nav className="header__nav">
         <ul className="header__nav-list">
           <li className="header__nav-item">
