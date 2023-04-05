@@ -34,14 +34,14 @@ Source code [Backend](https://github.com/tiffanysimione/Carbon-Footprint-Back-En
 4.Updated Styling
 
 ### MVP Goals
-Implement user authentication so only users who register/create an account can start creating/editing projects on their dashboard.
-Have a home page/dashboard that houses all projects.
-Allow user to edit every detail within each project.
-Allow user to update the status of each project (not started, in progress, complete).
-Allow user to create/update/delect/checkoff subtasks within each project.
-Allow user to log updates of project progress on each project’s show page.
-Create a “trash” bin page that hosts all deleted projects.
-Allow user to permanently delete all projects from the “trash” bin.
-Create a list of subtasks for each project from which the user can add to-do’s and check them off.
-Style with React Bootstrap.
+1.Implement user authentication so only users who register/create an account can start creating/editing projects on their dashboard.
+2.Have a home page/dashboard that houses all projects.
+3.Allow user to edit every detail within each project.
+4.Allow user to update the status of each project (not started, in progress, complete).
+5.Allow user to create/update/delect/checkoff subtasks within each project.
+6.Allow user to log updates of project progress on each project’s show page.
+7.Create a “trash” bin page that hosts all deleted projects.
+8.Allow user to permanently delete all projects from the “trash” bin.
+9.Create a list of subtasks for each project from which the user can add to-do’s and check them off.
+10.Style with React Bootstrap.
 
