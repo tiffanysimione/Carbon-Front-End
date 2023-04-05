@@ -33,3 +33,15 @@ Source code [Backend](https://github.com/tiffanysimione/Carbon-Footprint-Back-En
 3.3rd party API that provides information/links/resources on ways to eductae yourself on efforts to reduce your carbon footprint
 4.Updated Styling
 
+### MVP Goals
+Implement user authentication so only users who register/create an account can start creating/editing projects on their dashboard.
+Have a home page/dashboard that houses all projects.
+Allow user to edit every detail within each project.
+Allow user to update the status of each project (not started, in progress, complete).
+Allow user to create/update/delect/checkoff subtasks within each project.
+Allow user to log updates of project progress on each project’s show page.
+Create a “trash” bin page that hosts all deleted projects.
+Allow user to permanently delete all projects from the “trash” bin.
+Create a list of subtasks for each project from which the user can add to-do’s and check them off.
+Style with React Bootstrap.
+
