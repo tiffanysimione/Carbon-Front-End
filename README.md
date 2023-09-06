@@ -8,8 +8,6 @@ In the project we utilaized:
 
 -MERN Stack (Node.js, Mongoose, Express and React)
 -MongoDB Atlas
--Deployed on Heroku
--Trello 
 -Chartjs (To be updated)
 -AOS library (To be updated)
 -Google authentification/login (To be updated)
